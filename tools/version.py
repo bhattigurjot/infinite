@@ -1,3 +1,2 @@
-VERSION_MAJOR = 0
-VERSION_MINOR = 0
-print("infinite tools - v{}.{}".format(VERSION_MAJOR, VERSION_MINOR))
+import globals
+print("infinite tools - v{}.{}".format(globals.VERSION_MAJOR, globals.VERSION_MINOR))
