@@ -1,6 +1,8 @@
 import sys, platform
 import enum
 
+ENGINE_NAME = "infinite"
+PROJECT_NAME = "infinite-editor"
 VERSION_MAJOR = 1
 VERSION_MINOR = 0
 
