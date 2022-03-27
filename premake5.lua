@@ -23,6 +23,27 @@ project "infinite"
     }
     sysincludedirs { "%{prj.name}/include/%{prj.name}" }
     flags { "FatalWarnings" }
+    filter { "system:windows", "configurations:*" }
+        systemversion "latest"
+        defines { "INFINITE_PLATFORM_WINDOWS"}
+    filter { "system:linux", "configurations:*" }
+        defines { "INFINITE_PLATFORM_LINUX"}
+    filter { "system:macosx", "configurations:*" }
+        xcodebuildsettings 
+        {
+            ["MACOSX_DEPLOYMENT_TARGET"] = "10.15",
+            ["UseModernBuildSystem"] = "NO "
+        }
+        defines { "INFINITE_PLATFORM_MAC "}
+    filter { "configurations:Debug" }
+        defines { "INFINITE_CONFIG_DEBUG"}
+        runtime "Debug"
+        symbols "on"
+    filter { "configurations:Release" }
+        defines { "INFINITE_CONFIG_RELEASE"}
+        runtime "Release"
+        symbols "off"
+        optimize "on"
     
 project "infinite-editor"  
     location "infinite-editor"   
@@ -41,4 +62,25 @@ project "infinite-editor"
     }
     sysincludedirs { "infinite/include", "infinite/src" }
     flags { "FatalWarnings" }
+    filter { "system:windows", "configurations:*" }
+        systemversion "latest"
+        defines { "INFINITE_PLATFORM_WINDOWS"}
+    filter { "system:linux", "configurations:*" }
+        defines { "INFINITE_PLATFORM_LINUX"}
+    filter { "system:macosx", "configurations:*" }
+        xcodebuildsettings 
+        {
+            ["MACOSX_DEPLOYMENT_TARGET"] = "10.15",
+            ["UseModernBuildSystem"] = "NO "
+        }
+        defines { "INFINITE_PLATFORM_MAC "}
+    filter { "configurations:Debug" }
+        defines { "INFINITE_CONFIG_DEBUG"}
+        runtime "Debug"
+        symbols "on"
+    filter { "configurations:Release" }
+        defines { "INFINITE_CONFIG_RELEASE"}
+        runtime "Release"
+        symbols "off"
+        optimize "on"
     
