@@ -6,12 +6,17 @@ PROJECT_NAME = "infinite-editor"
 VERSION_MAJOR = 1
 VERSION_MINOR = 0
 
-PLATFORM = sys.platform
-
 class Platform_Type(enum.Enum):
     WINDOWS = "windows"
     LINUX = "linux"
     MAC = "darwin"
+
+class Build_Type(enum.Enum):
+    DEBUG = "Debug"
+    RELEASE = "Release"
+
+PLATFORM = sys.platform
+CONFIG = Build_Type.DEBUG.value
 
 for x in platform.uname():
     if "windows" in x.lower():
