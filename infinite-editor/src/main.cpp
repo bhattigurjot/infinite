@@ -4,8 +4,10 @@
 int main()
 {
     infinite::GetInfo();
-
-    std::cout << infinite::Add(1,2) << std::endl;
-    std::cout << infinite::Sub(3,2) << std::endl;
+    infinite::Initialize();
+    infinite::Shutdown();
+#ifdef INFINITE_PLATFORM_WINDOWS
+    system("pause");
+#endif
     return 0;
 }

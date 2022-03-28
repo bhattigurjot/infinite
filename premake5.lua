@@ -7,6 +7,10 @@ workspace "infinite"
 tdir = "bin/%{cfg.buildcfg}/%{prj.name}"
 odir = "bin_obj/%{cfg.buildcfg}/%{prj.name}"
 
+-- External Dependencies
+externals = {}
+externals["sdl2"] = "external/sdl2"
+
 project "infinite"
     location "infinite"
     kind "StaticLib"
@@ -21,7 +25,11 @@ project "infinite"
         "%{prj.name}/src/**.h", 
         "%{prj.name}/src/**.cpp"
     }
-    sysincludedirs { "%{prj.name}/include/%{prj.name}" }
+    sysincludedirs 
+    { 
+        "%{prj.name}/include/%{prj.name}",
+        "%{externals.sdl2}/include"
+    }
     flags { "FatalWarnings" }
     filter { "system:windows", "configurations:*" }
         systemversion "latest"
@@ -65,6 +73,8 @@ project "infinite-editor"
     filter { "system:windows", "configurations:*" }
         systemversion "latest"
         defines { "INFINITE_PLATFORM_WINDOWS"}
+        libdirs { "%{externals.sdl2}/lib" }
+        links { "SDL2" }
     filter { "system:linux", "configurations:*" }
         defines { "INFINITE_PLATFORM_LINUX"}
     filter { "system:macosx", "configurations:*" }
