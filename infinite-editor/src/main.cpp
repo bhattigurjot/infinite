@@ -3,9 +3,8 @@
 
 int main()
 {
-    infinite::GetInfo();
-    infinite::Initialize();
-    infinite::Shutdown();
+    infinite::Engine& engine = infinite::Engine::Instance();
+    engine.Run();
 
 // #ifdef INFINITE_PLATFORM_WINDOWS
 //     system("pause");
